@@ -2,13 +2,11 @@
 ![Focus](https://img.shields.io/badge/Focus-System_Hardening-success?style=for-the-badge)
 ![OS](https://img.shields.io/badge/OS-Ubuntu_/_Whonix-orange?style=for-the-badge&logo=linux)
 
-
-
 # 🛡️ Portfólio de Blue Team & Defesa Cibernética
 
-**Bem-vindo ao meu centro de operações de segurança!** Este repositório documenta minhas habilidades em **Defesa Ativa**, **Hardening de Sistemas** e **Mitigação de Riscos**. Aqui, o conhecimento ofensivo é a base para construir infraestruturas resilientes e seguras.
+> **Nota:** Este portfólio complementa minha atuação em [**Red Team Operations**](https://github.com/edenzafire/Red_Team_Repo). Juntos, eles formam minha base de Purple Teaming.
 
-> **Aviso:** Todas as demonstrações são realizadas em ambientes de laboratório controlados, focadas em conformidade, ética e proteção de dados.
+Bem-vindo ao meu centro de operações de segurança! Este repositório documenta minhas habilidades em **Defesa Ativa**, **Hardening** e **Mitigação de Riscos**. Aqui, o conhecimento ofensivo é a base para construir infraestruturas resilientes.
 
 ---
 
@@ -17,10 +15,15 @@
 Olá! Sou **Éden Zafire**, um entusiasta de cibersegurança focado em transformar vulnerabilidades em perímetros fortificados.
 
 
-- 🛡️ **Defesa Estratégica:** Especialista em converter táticas do MITRE ATT&CK em controles defensivos.
-- 🔍 **Threat Intelligence:** Monitoramento ativo de vazamentos e análise de pegada digital (OSINT defensivo).
-- ⚙️ **Hardening:** Experiência em blindagem de sistemas Linux e gestão de identidades.
-- 🎓 **Evolução Contínua:** Estudando para certificações de defesa e resposta a incidentes.
+---
+
+## 🛠️ Competências Core & Frameworks
+
+* 🛡️ **Defesa Estratégica (MITRE ATT&CK & D3FEND):** Especialista em converter táticas do **MITRE ATT&CK** em controles de detecção e resposta. Utilizo o framework **D3FEND** para projetar arquiteturas de defesa resilientes baseadas em engenharia de detecção.
+* 🔍 **Threat Intelligence:** Monitoramento ativo de indicadores de comprometimento (IoCs) e análise de pegada digital (OSINT) para antecipar movimentos de adversários.
+* ⚙️ **Hardening & NIST CSF:** Experiência em blindagem de sistemas Linux/Windows e gestão de identidades (IAM), seguindo as diretrizes do **NIST Cybersecurity Framework** para Identificar, Proteger e Detectar.
+* 📋 **Compliance e Governança:** Aplicação de controles baseados na **ISO 27001**, garantindo que a segurança técnica esteja alinhada aos objetivos de negócio e conformidade.
+* 🎓 **Evolução Contínua:** Pesquisa constante em metodologias de *Incident Response* e estudos voltados para certificações de defesa cibernética de alto nível.
 
 ---
 
