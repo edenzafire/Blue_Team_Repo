@@ -1,10 +1,6 @@
 ![Status](https://img.shields.io/badge/Status-Defensive_Mode-blue?style=for-the-badge&logo=shield)
 ![Focus](https://img.shields.io/badge/Focus-System_Hardening-success?style=for-the-badge)
 ![OS](https://img.shields.io/badge/OS-Ubuntu_/_Whonix-orange?style=for-the-badge&logo=linux)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=b>
-![Nmap](https://img.shields.io/badge/Nmap-006400?style=for-the-badge&logo=nmap&logoColor=whit>
-![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=for-the-badge&logo=wireshark>
-![Firewall](https://img.shields.io/badge/UFW/Iptables-E95420?style=for-the-badge&logo=ubuntu&>
 
 # 🛡️ Portfólio de Blue Team & Defesa Cibernética
 
