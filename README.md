@@ -1,6 +1,10 @@
 ![Status](https://img.shields.io/badge/Status-Defensive_Mode-blue?style=for-the-badge&logo=shield)
 ![Focus](https://img.shields.io/badge/Focus-System_Hardening-success?style=for-the-badge)
 ![OS](https://img.shields.io/badge/OS-Ubuntu_/_Whonix-orange?style=for-the-badge&logo=linux)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=b>
+![Nmap](https://img.shields.io/badge/Nmap-006400?style=for-the-badge&logo=nmap&logoColor=whit>
+![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=for-the-badge&logo=wireshark>
+![Firewall](https://img.shields.io/badge/UFW/Iptables-E95420?style=for-the-badge&logo=ubuntu&>
 
 # 🛡️ Portfólio de Blue Team & Defesa Cibernética
 
@@ -24,17 +28,6 @@ Olá! Sou **Éden Zafire**, um entusiasta de cibersegurança focado em transform
 * ⚙️ **Hardening & NIST CSF:** Experiência em blindagem de sistemas Linux/Windows e gestão de identidades (IAM), seguindo as diretrizes do **NIST Cybersecurity Framework** para Identificar, Proteger e Detectar.
 * 📋 **Compliance e Governança:** Aplicação de controles baseados na **ISO 27001**, garantindo que a segurança técnica esteja alinhada aos objetivos de negócio e conformidade.
 * 🎓 **Evolução Contínua:** Pesquisa constante em metodologias de *Incident Response* e estudos voltados para certificações de defesa cibernética de alto nível.
-
----
-
-## 🛠️ Stack Tecnológica & Ferramentas
-
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-![Nmap](https://img.shields.io/badge/Nmap-006400?style=for-the-badge&logo=nmap&logoColor=white)
-![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white)
-![Firewall](https://img.shields.io/badge/UFW/Iptables-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
-
----
 
 <p align="center">
   <a href="https://github.com/edenzafire/Blue_Team_Repo">
