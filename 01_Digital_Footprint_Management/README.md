@@ -13,15 +13,20 @@ O objetivo principal é a aplicação de controles de segurança rigorosos para 
 
 ---
 
-## 📑 Índice de Documentação Técnica (Fase 01)
-A estrutura abaixo centraliza todos os artefatos gerados durante o processo de remediação e proteção.
+## 📂 Documentação das Operações
 
-| Documento | Descrição | Referência |
-| :--- | :--- | :--- |
-| [🧪 Lab Report](./fase-01-osint-remediation/LAB-REPORT-01.md) | Evidências de Decommissioning e Sanitização | MITRE D3FEND |
-| [🛡️ Hardening](./fase-01-osint-remediation/HARDENING-MONITORING.md) | Controles de MFA e Monitoramento de Dark Web | NIST PR.IP-6 |
-| [🏁 Post-Mortem](./fase-01-osint-remediation/POST-MORTEM.md) | Lições aprendidas e Melhoria Contínua | NIST SP 800-61 |
-| [📸 Evidences Folder](./fase-01-osint-remediation/evidences/) | Repositório de logs, prints e artefatos brutos | Auditoria Técnica |
+### 🔵 Fase 01: Operação Digital Ghost (Remediação)
+*Fase focada na neutralização de ativos legados e redução imediata da superfície de ataque identificado via Red Team OSINT.*
+
+1. 📑 **[Relatório de Execução (LR-2026-001)](./LAB-REPORT-01.md)**: Detalhamento da remediação baseada nos achados de ataque.
+2. 🧹 **[Procedimento de Higienização](./SOCIAL_CLEANUP.md)**: Logs técnicos da limpeza de redes sociais (Meta, TikTok, E-mails).
+3. 🔐 **[Hardening & Monitoramento (LR-2026-002)](./HARDENING-MONITORING-02.md)**: Implementação de defesas persistentes e MFA físico (FIDO2).
+4. 🏁 **[Post-Mortem & Lições Aprendidas (PM-2026-001)](./POST-MORTEM-03.md)**: Análise crítica, causa raiz e veredito técnico da operação.
+
+### 🛡️ Fase 02: Asset Shielding (Blindagem)
+*Fase focada na fortificação dos ativos remanescentes e governança de identidade (Em andamento).*
+
+5. 🧱 **[Asset Inventory & Shielding (LR-2026-004)](./ASSET-SHIELDING-04.md)**: Inventário crítico e implementação de camadas de proteção profunda (Zero-Trust & Kernel Hardening).
 
 ---
 ### 🏛️ The "Master" Layer: MITRE D3FEND™ Integration

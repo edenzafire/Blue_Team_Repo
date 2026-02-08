@@ -59,4 +59,4 @@ A Fase 01 encerra-se com a transição de um estado de vulnerabilidade passiva p
 * **Attack Surface Reduction (ASR):** ~85% de redução estimada.
 * **Compliance:** 100% alinhado ao **Art. 18 da LGPD** (Direito à Eliminação).
 
-**Próxima Etapa:** *Fase 02 - Asset Inventory & Shielding.*
+**A etapa de limpesa você poderá ver aqui:** [ SOCIAL_CLEANUP.md ] (  )
