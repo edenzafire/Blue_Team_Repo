@@ -1,14 +1,13 @@
-# 🛡️ Post-Remediation Hardening & Continuous Monitoring
+### 🛡️ Post-Remediation Hardening & Continuous Monitoring
 **Status:** Camada de Persistência Defensiva | **Foco:** Prevenção e Vigilância Ativa
 
 Após a execução do *Decommissioning* (encerramento de contas), estabeleceu-se uma arquitetura de endurecimento (**Hardening**) para garantir a resiliência das identidades remanescentes e a detecção proativa de novas ameaças.
 
 ---
 
-## 📉 Visualização de Redução de Superfície (ASR)
+### 📉 Visualização de Redução de Superfície (ASR)
 Este gráfico representa a transição do estado de exposição total para o estado de monitoramento controlado.
 
-```mermaid
 graph TD
     A[Estado Inicial: 100% Exposto] --> B{Fase 01: Remediação}
     B --> C[Contas Deletadas: -65%]
@@ -18,9 +17,9 @@ graph TD
     style F fill:#003366,stroke:#333,stroke-width:2px,color:#fff
 
 
-# 🛡️ Hardening & Continuous Monitoring Policy
+### 🛡️ Hardening & Continuous Monitoring Policy
 
-## 🔐 1. Gestão de Segredos e Alta Entropia (D3-OTAD)
+### 🔐 1. Gestão de Segredos e Alta Entropia (D3-OTAD)
 Para mitigar ataques de **Credential Stuffing** e **Brute Force**, aplicamos uma política de soberania de credenciais:
 
 * **Vault Storage:** Migração de 100% das credenciais ativas para um cofre criptografado (*Zero-Knowledge*).
@@ -29,7 +28,7 @@ Para mitigar ataques de **Credential Stuffing** e **Brute Force**, aplicamos uma
 
 ---
 
-## 🕵️ 2. Defesa Ativa: Monitoramento de Dark Web (D3-LTA)
+### 🕵️ 2. Defesa Ativa: Monitoramento de Dark Web (D3-LTA)
 A segurança passiva foi substituída pelo monitoramento contínuo de **PII (Personally Identifiable Information)**.
 
 * **Ação:** Monitoramento em tempo real via APIs de vazamentos (*Have I Been Pwned* / *Google Monitoring*).
@@ -40,7 +39,7 @@ A segurança passiva foi substituída pelo monitoramento contínuo de **PII (Per
 
 ---
 
-## 🔍 3. Auditoria de Indexação e Remediação de Cache (D3-FCA)
+### 🔍 3. Auditoria de Indexação e Remediação de Cache (D3-FCA)
 Garantia de que a exclusão de dados foi devidamente processada pelos motores de busca, exercendo o **Direito ao Esquecimento**.
 
 ### Matriz de Auditoria (Google Dorks)

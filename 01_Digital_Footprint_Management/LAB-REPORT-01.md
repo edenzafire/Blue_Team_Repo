@@ -1,10 +1,12 @@
 # 🧪 Lab Report: Identity Decommissioning & Surface Reduction
-**ID:** LR-2024-001 | **Classificação:** TLP:CLEAR | **Fase:** Blue Team 01
+**ID:** LR-2026-001 | **Classificação:** TLP:CLEAR | **Fase:** Blue Team 01
 
-## 1. Executive Summary
+
+
+## 0.0. Executive Summary
 Relatório de execução da remediação baseada nos achados do **[Red Team OSINT](https://github.com/edenzafire/Red_Team_Repo)**. O foco reside na eliminação de identidades legadas e higienização de metadados para neutralizar vetores de ataque identificados na fase ofensiva.
 
-## 2. Análise de Risco (Pre-Remediation)
+## 1. Análise de Risco (Pre-Remediation)
 Aplica-se a técnica **D3-ICA (Identifier Cache Analysis)** do framework MITRE D3FEND para mapear a persistência de identificadores.
 
 | Ativo | Vulnerabilidade | Vetor de Exploração (MITRE) | Impacto Estimado |
@@ -12,6 +14,11 @@ Aplica-se a técnica **D3-ICA (Identifier Cache Analysis)** do framework MITRE D
 | **Meta Accounts** | MFA Legado / Inexistente | [T1589.002] Personal Email | Alto (Pivotagem) |
 | **TikTok Asset** | Metadata Leakage | [T1589.003] Artifacts | Médio (Recon) |
 | **Old Emails** | Expired Ownership | [T1586.002] Email Accounts | Crítico (ATO) |
+
+### 2.📋 Escopo da Operação & Consolidação de Dados
+Nota de Documentação: Devido à alta densidade de evidências técnicas e à multiplicidade de plataformas higienizadas (incluindo Meta, TikTok e provedores de E-mail), este portfólio apresenta uma versão consolidada da operação.
+
+O objetivo é priorizar a clareza estratégica sobre o volume bruto de dados, focando nas metodologias de Surface Reduction (Redução de Superfície de Ataque) que podem ser replicadas em qualquer ativo digital. Para detalhes técnicos granulares de cada plataforma, consulte os anexos de execução.
 
 ---
 
@@ -37,6 +44,12 @@ Execução do protocolo de destruição de dados conforme políticas das platafo
 
 ---
 
+## 🛠️ Detalhamento da Operação por Plataforma
+Para visualizar os logs específicos, as configurações de privacidade alteradas e o status de cada rede social (Facebook, instagram e TikTok), acesse o documento de execução detalhada:
+
+👉 [**Procedimento de Higienização de Redes Sociais (Checklist & Logs)**](./SOCIAL_CLEANUP.md)
+
+---
 ## 4. Logs de Execução do Sistema
 Simulação de telemetria durante o processo de encerramento de sessões:
 
