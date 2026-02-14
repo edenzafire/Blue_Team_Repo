@@ -1,62 +1,68 @@
-### 🛡️ Post-Remediation Hardening & Continuous Monitoring
-**Status:** Camada de Persistência Defensiva | **Foco:** Prevenção e Vigilância Ativa
-
-Após a execução do *Decommissioning* (encerramento de contas), estabeleceu-se uma arquitetura de endurecimento (**Hardening**) para garantir a resiliência das identidades remanescentes e a detecção proativa de novas ameaças.
+# 🔐 Hardening & Continuous Monitoring Policy
+**ID:** HM-2026-001 | **Status:** Ativo | **Nível de Proteção:** Tier 3 (High)
 
 ---
 
-### 📉 Visualização de Redução de Superfície (ASR)
-Este gráfico representa a transição do estado de exposição total para o estado de monitoramento controlado.
+## 1. Escopo de Blindagem
+Após a redução da superfície de ataque (Fase 01), este documento estabelece os controles de segurança aplicados aos ativos remanescentes para garantir persistência defensiva e detecção precoce.
 
+---
+
+## 2. Implementação de Identity Hardening
+
+### 🔑 Autenticação de Fator Múltiplo (D3-OTAD)
+Para eliminar vetores de **SIM Swap** e **Phishing de Proxy**, estabelecemos a transição para métodos de autenticação resistentes a interceptação:
+* **Fator Primário:** Hardware Security Keys (**FIDO2/WebAuthn** - Yubikey/Titan).
+* **Fator de Backup:** Provedores TOTP (Aegis/Authy) com backups criptografados offline.
+* **Diretriz:** Desativação total de SMS e E-mail como métodos de recuperação/MFA em todos os serviços críticos.
+
+### 🛡️ Gestão de Segredos (Secrets Management)
+* **Cofre de Senhas:** Migração para arquitetura *Zero-Knowledge* (Bitwarden/KeePassXC).
+* **Política de Entropia:** Senhas geradas via CSPRNG com mínimo de 32 caracteres, incluindo caracteres especiais e alfanuméricos aleatórios.
+
+---
+
+## 3. Vigilância Ativa e Monitoramento (D3-LTA)
+
+A defesa passiva foi substituída por um modelo de monitoramento contínuo da Pegada Digital:
+
+### 🕵️ Monitoramento de Exposição de PII
+Configuração de sentinelas para detectar vazamentos de dados em tempo real:
+* **Integrations:** Webhooks vinculados ao *Have I Been Pwned* (Domain Search) e *Google Dark Web Report*.
+* **Ação Automática:** Em caso de "Hit" (detecção), o protocolo de Resposta a Incidentes (IR) é disparado imediatamente.
+
+### 🔍 Auditoria de Indexação (Anti-OSINT)
+Varreduras trimestrais para garantir o "Direito ao Esquecimento":
+| Ferramenta/Query | Foco Técnico | Frequência |
+| :--- | :--- | :--- |
+| `Google Dorks` | Identificar cache residual ou novos leaks | Mensal |
+| `Sherlock/Maigret` | Detectar "Shadow Accounts" criadas por terceiros | Trimestral |
+| `Have I Been Pwned` | Monitorar credenciais vinculadas ao domínio | Real-time |
+
+---
+
+## 4. Matriz de Resiliência (Visual)
+
+```mermaid
 graph TD
-    A[Estado Inicial: 100% Exposto] --> B{Fase 01: Remediação}
-    B --> C[Contas Deletadas: -65%]
-    B --> D[Metadados Sanitizados: -20%]
-    B --> E[Superfície Remanescente: 15%]
-    E --> F[Hardening & Vigilância Ativa]
-    style F fill:#003366,stroke:#333,stroke-width:2px,color:#fff
-
-
-### 🛡️ Hardening & Continuous Monitoring Policy
-
-### 🔐 1. Gestão de Segredos e Alta Entropia (D3-OTAD)
-Para mitigar ataques de **Credential Stuffing** e **Brute Force**, aplicamos uma política de soberania de credenciais:
-
-* **Vault Storage:** Migração de 100% das credenciais ativas para um cofre criptografado (*Zero-Knowledge*).
-* **MFA Hardening:** Substituição de autenticação via SMS/E-mail por **MFA Físico (FIDO2/WebAuthn)** e **TOTP** (App de autenticação).
-* **Diretriz:** Eliminação completa da dependência de provedores de telefonia para fins de segurança, visando a prevenção total contra ataques de **SIM Swap**.
+    A[Ativo Remanescente] --> B{Camada de Proteção}
+    B --> C[MFA Físico FIDO2]
+    B --> D[Monitoramento de Dark Web]
+    B --> E[Zero-Knowledge Vault]
+    C --> F((RESILIÊNCIA SÊNIOR))
+    D --> F
+    E --> F
+    style F fill:#003366,stroke:#00ccff,stroke-width:4px,color:#fff
+```
 
 ---
 
-### 🕵️ 2. Defesa Ativa: Monitoramento de Dark Web (D3-LTA)
-A segurança passiva foi substituída pelo monitoramento contínuo de **PII (Personally Identifiable Information)**.
+## 5. Protocolo de Resposta a Incidentes (IR)
+Caso o monitoramento proativo detecte uma nova exposição ou vazamento de credenciais:
 
-* **Ação:** Monitoramento em tempo real via APIs de vazamentos (*Have I Been Pwned* / *Google Monitoring*).
-* **Incident Response (IR):** Em caso de detecção de nova exposição, o protocolo de resposta imediata estabelecido é:
-    1.  Rotação automática da credencial afetada.
-    2.  Revogação forçada de tokens de sessão (*Session Kill*).
-    3.  Auditoria de logs de segurança do provedor de serviço.
+1.  **Rotate:** Rotação imediata da credencial afetada através do cofre de senhas (*Secrets Rotation*).
+2.  **Session Kill:** Revogação global de todos os tokens e sessões ativas (**Técnica D3-EAL**).
+3.  **Audit:** Análise profunda dos logs de acesso e auditoria para identificar a causa raiz e a origem do *leak*.
 
 ---
-
-### 🔍 3. Auditoria de Indexação e Remediação de Cache (D3-FCA)
-Garantia de que a exclusão de dados foi devidamente processada pelos motores de busca, exercendo o **Direito ao Esquecimento**.
-
-### Matriz de Auditoria (Google Dorks)
-| Query de Auditoria | Objetivo Técnico |
-| :--- | :--- |
-| `site:facebook.com "meu_user"` | Validar persistência de perfil em cache |
-| `site:instagram.com "meu_user"` | Validar remoção de indexação de mídias |
-| `"meu_nome" -site:linkedin.com` | Localizar PII em sites agregadores de dados |
-
-* **Remediação:** Caso resíduos sejam encontrados, utiliza-se o *Google Search Console Outdated Content Tool* para forçar a limpeza do índice e expurgo de cache.
-
----
-
-## 📈 Conclusão Técnica da Fase 01
-A Fase 01 encerra-se com a transição de um estado de vulnerabilidade passiva para um estado de **Vigilância Ativa**.
-
-* **Attack Surface Reduction (ASR):** ~85% de redução estimada.
-* **Compliance:** 100% alinhado ao **Art. 18 da LGPD** (Direito à Eliminação).
-
-**A etapa de limpesa você poderá ver aqui:** [ SOCIAL_CLEANUP.md ] (  )
+[⬅️ Voltar ao Dashboard](./README.md) | [Próximo: Post-Mortem ➡️](./POST-MORTEM-03.md)

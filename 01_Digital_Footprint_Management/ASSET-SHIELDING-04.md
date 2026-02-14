@@ -1,54 +1,66 @@
-# 🛡️ Fase 02: Asset Inventory & Shielding
-**ID:** LR-2026-004 | **Status:** 🔵 Em Planejamento / Execução | **Framework:** NIST CSF (Protect)
-
-![Status: In Progress](https://img.shields.io/badge/Status-In_Progress-yellow?style=for-the-badge)
-![Security Goal: Asset Resistance](https://img.shields.io/badge/Goal-Asset_Shielding-blue?style=for-the-badge)
-
-## 1. Escopo da Fase 02
-Após a redução de 85% da superfície na Fase 01 (Operação Digital Ghost), a Fase 02 foca na **blindagem dos ativos remanescentes**. O objetivo é garantir que cada conta ou sistema ativo possua uma camada de defesa profunda, tornando o custo de um ataque proibitivo para o adversário.
+# 🧱 Asset Inventory & Shielding (Fase 02)
+**ID:** LR-2026-004 | **Status:** 🟡 EM ANDAMENTO | **Nível:** Arquitetura Zero-Trust
 
 ---
 
-## 2. Inventário de Ativos Críticos (Asset Inventory)
-Aplicando o controle 01 do **CIS Controls**, catalogamos os ativos que passarão pelo processo de *Shielding*:
+## 0. Visão Geral
+Após a redução da superfície de ataque (ASR) na Fase 01, esta etapa foca na **Blindagem de Ativos Remanescentes**. O objetivo é garantir que os ativos críticos que precisam permanecer ativos (E-mail profissional, GitHub, LinkedIn) operem sob uma arquitetura de confiança zero, onde cada acesso é verificado e isolado.
 
-| Categoria | Ativo | Nível de Criticidade | Proteção Atual |
+---
+
+## 1. Inventário de Ativos Críticos (Survivors)
+Lista dos ativos que sobreviveram ao *decommissioning* e que agora recebem a camada de proteção reforçada:
+
+| Categoria | Ativo | Finalidade | Critério de Proteção |
 | :--- | :--- | :--- | :--- |
-| **Identidade** | E-mail Principal (Proton/Vault) | 🔥 Crítico | MFA FIDO2 + Alias |
-| **Financeiro** | Banking & Crypto Apps | 🔥 Crítico | Biometria + Hardware Token |
-| **Infra** | Lab Host (Arch Linux) | 🛡️ Médio | Firewall + SSH Key Only |
-| **Cloud** | GitHub & Repositórios | 🛡️ Médio | Personal Access Tokens (PAT) |
+| **Identidade** | E-mail Principal | Comunicação | MFA FIDO2 + PGP |
+| **Código** | GitHub / GitLab | Portfólio / Lab | Assinatura de Commits (SSH/GPG) |
+| **Infra** | Workstation (Linux) | Lab de Cyber | Kernel Hardening + Full Disk Encryption |
+| **Rede** | Domínio Profissional | Portfólio | DNS Shielding + Proxy (Cloudflare) |
 
 ---
 
-## 3. Estratégia de Shielding (Blindagem)
+## 2. Estratégias de Blindagem (Shielding)
 
-### 3.1 Hardening de Identidade (Identity Shielding)
-* **Email Aliasing:** Implementação de ferramentas como *SimpleLogin* ou *AnonAddy* para que o e-mail real nunca seja exposto em serviços terceiros.
-* **MFA Physical Redundancy:** Configuração de chaves de segurança reserva (Backup Keys) armazenadas em local físico seguro (**Offline Storage**).
+### 🛡️ Camada 01: DNS & Traffic Shielding
+Utilizamos técnicas de **DNS Filtering** para impedir o rastreamento (fingerprinting) de rede:
+* **Controle:** Implementação de DNS over HTTPS (DoH) via Quad9/Cloudflare.
+* **Técnica D3FEND:** *Network Traffic Filtering*.
+* **Objetivo:** Impedir que o atacante identifique a infraestrutura através de consultas DNS em texto claro.
 
-### 3.2 System Shielding (Infraestrutura)
-* **Kernel Hardening:** Configuração de parâmetros de kernel no Arch Linux para mitigar ataques de memória (ASLR, Stack Protectors).
-* **Network Cloaking:** Uso de VPNs persistentes e Kill-switches para ocultar a origem real do tráfego do laboratório.
-
----
-
-## 4. Matriz de Proteção (Framework D3FEND Mapping)
-Mapeamento das contramedidas técnicas que estão sendo implementadas nesta fase:
-
-| Técnica D3FEND | Nome da Contramedida | Descrição Técnica |
-| :--- | :--- | :--- |
-| **D3-SFP** | Software Firmware Patching | Automação de updates críticos no ambiente Arch/Ubuntu. |
-| **D3-IT** | Inbound Traffic Filtering | Configuração de tabelas de IP (UFW/NFTables) no Lab. |
-| **D3-AZ** | Authentication Zone | Criação de perímetros de acesso baseados em dispositivos confiáveis. |
+### 🛡️ Camada 02: Kernel & OS Hardening
+Para o laboratório físico/virtual, aplicamos políticas de endurecimento do sistema:
+* **Ação:** Desativação de portas USB não utilizadas, enforcement de SELinux/AppArmor e criptografia total de disco (LUKS).
+* **Técnica D3FEND:** *Platform Hardening*.
 
 ---
 
-## 5. Próximos Passos (Milestones)
-- [ ] Concluir o mapeamento de todos os sub-serviços vinculados ao e-mail principal.
-- [ ] Implementar rotação de chaves SSH para o PC Host.
-- [ ] Realizar teste de intrusão (Red Team) para validar a nova blindagem.
+## 3. Fluxo de Acesso Zero-Trust (Visual)
+
+```mermaid
+graph LR
+    A[Usuário/Admin] --> B{ZTA Broker}
+    B -- Verifica FIDO2 --> C[Acesso ao Ativo]
+    B -- Log de Auditoria --> D[(SIEM/Monitoria)]
+    C --> E[Cofre de Senhas Offline]
+    style B fill:#f9f,stroke:#333,stroke-width:2px
+    style C fill:#00ff00,color:#000
+```
+---
 
 ---
-**Responsável:** [Seu Nome/User]  
-**Referência:** NIST Cybersecurity Framework (Core Functions: Identify & Protect)
+
+## 4. Checklist de Blindagem (Progress)
+
+- [x] **Identidade:** Migração para MFA Físico (FIDO2).
+- [x] **Comunicação:** Implementação de Aliases para serviços diferentes para mitigar correlação de dados.
+- [ ] **Rede:** Configuração de Proxy Reverso para ocultar IP real (Em progresso).
+- [ ] **Código:** Configuração de assinaturas GPG para garantir a integridade e não-repúdio dos repositórios.
+
+---
+
+## 5. Próximos Passos
+A finalização deste documento ocorrerá após a validação rigorosa dos logs de acesso e a realização de um teste de intrusão interna (**Internal PenTest**) para validar a eficácia das novas barreiras de segurança.
+
+---
+[⬅️ Voltar ao Dashboard](./README.md)
