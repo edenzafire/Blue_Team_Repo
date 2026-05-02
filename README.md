@@ -1,12 +1,26 @@
-![Status](https://img.shields.io/badge/Status-Defensive_Mode-blue?style=for-the-badge&logo=shield)
-![Focus](https://img.shields.io/badge/Focus-System_Hardening-success?style=for-the-badge)
-![OS](https://img.shields.io/badge/OS-Ubuntu_/_Whonix-orange?style=for-the-badge&logo=linux)
+# 🛡️ Blue Team Operations & Defesa Cibernética
+> **Foco:** Monitoramento, Hardening e Mitigação de Riscos.
 
-# 🛡️ Portfólio de Blue Team & Defesa Cibernética
+Nota: Este portfólio é a camada de proteção que consolida meus estudos em **[Red Team](https://github.com/edenzafire/Red_Team_Repo)** e **[Low-Level Security](https://github.com/edenzafire/Low_Level_Repo)**. Juntos, eles formam minha base de **Purple Teaming**, onde o conhecimento ofensivo é utilizado para construir infraestruturas resilientes e detecções precisas.
 
-> **Nota:** Este portfólio complementa minha atuação em [**Red Team Operations**](https://github.com/edenzafire/Red_Team_Repo). Juntos, eles formam minha base de Purple Teaming.
+---
 
-Bem-vindo ao meu centro de operações de segurança! Este repositório documenta minhas habilidades em **Defesa Ativa**, **Hardening** e **Mitigação de Riscos**. Aqui, o conhecimento ofensivo é a base para construir infraestruturas resilientes.
+## 📊 Operações de Defesa
+![BlueTeam](https://img.shields.io/badge/Focus-Active--Defense-blue?style=for-the-badge&logo=fortinet&logoColor=white)
+![Detection](https://img.shields.io/badge/Tools-SIEM%20%7C%20EDR%20%7C%20WAF-brightgreen?style=for-the-badge&logo=elasticstack&logoColor=white)
+![Framework](https://img.shields.io/badge/Framework-NIST%20%7C%20MITRE%20D3FEND-lightgrey?style=for-the-badge&logo=googlecloud&logoColor=white)
+
+---
+
+## 📌 Sobre este Repositório
+Este é o meu Centro de Operações de Segurança (SOC) pessoal. Aqui documento a implementação de controles de segurança, análise de logs e o endurecimento (*hardening*) de sistemas. Minha filosofia de defesa é baseada em dados: "Não basta bloquear, é preciso entender o comportamento".
+
+### 🛡️ O Elo do Purple Teaming
+Neste repositório, transformamos a exploração em proteção:
+* [**Red Team**](https://github.com/edenzafire/Red_Team_Repo) Recebemos o comportamento de payloads.
+* [**Low Level:**](https://github.com/edenzafire/Low-Level-Security) técnicas de evasão e cadeias de ataque.
+* [**No Blue Team:**] Implementamos regras de detecção (YARA, Sigma), configuramos Firewalls/IDPs e aplicamos políticas de Hardening.
+* **Resultado:** Um ciclo contínuo de melhoria onde cada ataque bem-sucedido no lab gera uma nova barreira defensiva.
 
 ---
 
