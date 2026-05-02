@@ -17,9 +17,8 @@ Este é o meu Centro de Operações de Segurança (SOC) pessoal. Aqui documento 
 
 ### 🛡️ O Elo do Purple Teaming
 Neste repositório, transformamos a exploração em proteção:
-* [**Red Team**](https://github.com/edenzafire/Red_Team_Repo) Recebemos o comportamento de payloads.
-* [**Low Level:**](https://github.com/edenzafire/Low-Level-Security) técnicas de evasão e cadeias de ataque.
-* [**No Blue Team:**] Implementamos regras de detecção (YARA, Sigma), configuramos Firewalls/IDPs e aplicamos políticas de Hardening.
+* **Do Red/Low Level:** Recebemos o comportamento de payloads, técnicas de evasão e cadeias de ataque.
+* **No Blue Team:** Implementamos regras de detecção (YARA, Sigma), configuramos Firewalls/IDPs e aplicamos políticas de Hardening.
 * **Resultado:** Um ciclo contínuo de melhoria onde cada ataque bem-sucedido no lab gera uma nova barreira defensiva.
 
 ---
