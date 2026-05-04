@@ -53,21 +53,23 @@ Abaixo, apresento como utilizo a mentalidade ofensiva para implementar contramed
 * **Ação:** Mapeamento de exposição externa e limpeza de metadados.
 * **Implementação:** Aplicação de "Direito ao Esquecimento" e monitoramento de *leaks* (Have I Been Pwned/BreachDirectory).
 * **Foco:** Privacidade e Redução de Superfície.
+[**Você pode acessar através do Link**](https://github.com/edenzafire/Blue_Team_Repo/tree/main/01_Digital_Footprint_Management)
 
 ### 02. Inventário e Blindagem de Ativos (Recon → Blue)
 * **Ação:** Varredura de serviços críticos e fechamento de portas desnecessárias.
 * **Implementação:** Configuração de **Host-based Firewalls** para bloquear acessos não autorizados.
 * **Foco:** Asset Inventory & Shielding.
+[**Você pode acessar através do Link**](https://github.com/edenzafire/Blue_Team_Repo/tree/main/02_Vulnerability_Management)
 
-### 03. System Hardening (Enumeration → Blue)
-* **Ação:** Identificação de protocolos legados e permissões excessivas.
-* **Implementação:** Desativação de SMBv1, hardening de kernel e políticas de senhas complexas.
-* **Foco:** Princípio do Privilégio Mínimo.
-
-### 04. Segurança de Identidade - IAM (Social Engineering → Blue)
+### 03. Segurança de Identidade - IAM (Social Engineering → Blue)
 * **Ação:** Prevenção contra roubo de credenciais e acessos indevidos.
 * **Implementação:** Deploy de **MFA (2FA)** e processos de *Decommissioning* de contas inativas.
 * **Foco:** Identity & Access Management.
+
+### 04. System Hardening (Enumeration → Blue)
+* **Ação:** Identificação de protocolos legados e permissões excessivas.
+* **Implementação:** Desativação de SMBv1, hardening de kernel e políticas de senhas complexas.
+* **Foco:** Princípio do Privilégio Mínimo.
 
 ### 05. Proteção de Endpoint e Detecção (Exploitation → Blue)
 * **Ação:** Bloqueio de execução de payloads e scripts maliciosos.
