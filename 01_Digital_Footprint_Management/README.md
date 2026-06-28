@@ -18,7 +18,7 @@
 ---
 
 ### 🎯 Visão Estratégica
-Esta fase documenta a remediação sistemática de ativos identificados durante a etapa de **[OSINT - Red Team Operation](https://github.com/edenzafire/Red_Team_Repo)**. 
+Esta fase documenta a remediação sistemática de ativos identificados durante a etapa de **[OSINT - Red Team Operation](https://github.com/edenzafire/Red_Team_Repo/tree/main/01_Osint/01_ClearWeb)**. 
 
 Diferente de uma simples "limpeza de dados", esta operação aplica **Engenharia de Resiliência** para eliminar a **Dívida Técnica de Segurança** acumulada em identidades legadas (2011-2015), garantindo conformidade com o **Art. 18 da LGPD** e neutralizando vetores de *Account Takeover* (ATO) e Engenharia Social.
 
