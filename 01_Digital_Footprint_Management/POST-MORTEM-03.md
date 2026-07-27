@@ -4,7 +4,7 @@
 ---
 
 ## 1. Resumo Executivo (Executive Summary)
-A Operação **Digital Ghost** foi concluída com sucesso, resultando na neutralização de identidades digitais obsoletas (2011-2015) que representavam uma **Dívida Técnica de Segurança** crítica. A remediação direta dos achados do [Red Team Recon](https://github.com/edenzafire/Red_Team_Repo) permitiu a redução da superfície de ataque e a implementação de uma nova arquitetura de resiliência.
+A Operação **Digital Ghost** foi concluída com sucesso, resultando na neutralização de identidades digitais obsoletas (2011-2015) que representavam uma **Dívida Técnica de Segurança** crítica. A remediação direta dos achados do [Red Team Recon](https://github.com/edenzafire/Red_Team_Repo/tree/main/02_Recon) permitiu a redução da superfície de ataque e a implementação de uma nova arquitetura de resiliência.
 
 ---
 

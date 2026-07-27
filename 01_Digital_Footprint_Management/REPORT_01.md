@@ -4,7 +4,7 @@
 ---
 
 ## 0. Executive Summary
-Relatório de execução da remediação baseada nos achados do **[Red Team OSINT](https://github.com/edenzafire/Red_Team_Repo)**. O foco reside na eliminação de identidades legadas e higienização de metadados para neutralizar vetores de ataque identificados na fase ofensiva, aplicando os princípios de **Purple Teaming**.
+Relatório de execução da remediação baseada nos achados do **[Red Team OSINT](https://github.com/edenzafire/Red_Team_Repo/tree/main/01_Osint)**. O foco reside na eliminação de identidades legadas e higienização de metadados para neutralizar vetores de ataque identificados na fase ofensiva, aplicando os princípios de **Purple Teaming**.
 
 ---
 
