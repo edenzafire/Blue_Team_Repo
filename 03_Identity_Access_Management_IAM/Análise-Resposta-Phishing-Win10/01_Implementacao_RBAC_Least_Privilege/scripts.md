@@ -1,2 +1,0 @@
-## <-- Scripts PowerShell/Bash usados
-
