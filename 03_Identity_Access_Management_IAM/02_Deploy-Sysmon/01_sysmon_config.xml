@@ -1,1 +1,102 @@
-## lgkjrththne
+<Sysmon schemaversion="4.90">
+  <!-- ========================================================================= -->
+  <!-- CONFIGURAÇÃO GLOBAL                                                       -->
+  <!-- ========================================================================= -->
+  <HashAlgorithms>MD5,SHA256,IMPHASH</HashAlgorithms>
+  <CheckRevocation>False</CheckRevocation>
+
+  <EventFiltering>
+
+    <!-- ========================================================================= -->
+    <!-- EVENT ID 1: PROCESS CREATION (Criação de Processos)                       -->
+    <!-- Mapeamento MITRE ATT&CK: T1059 (Command and Scripting Interpreter)       -->
+    <!-- ========================================================================= -->
+    <ProcessCreate onmatch="include">
+      <!-- Monitorar executáveis de sistema frequentemente abused por atacantes -->
+      <Image condition="end with">\powershell.exe</Image>
+      <Image condition="end with">\cmd.exe</Image>
+      <Image condition="end with">\wmic.exe</Image>
+      <Image condition="end with">\cscript.exe</Image>
+      <Image condition="end with">\wscript.exe</Image>
+      <Image condition="end with">\rundll32.exe</Image>
+      <Image condition="end with">\regsvr32.exe</Image>
+      <Image condition="end with">\mshta.exe</Image>
+      <Image condition="end with">\bitsadmin.exe</Image>
+      <Image condition="end with">\certutil.exe</Image>
+
+      <!-- Capturar qualquer processo iniciado a partir de pastas temporárias ou de usuários -->
+      <Image condition="begin with">C:\Users\</Image>
+      <Image condition="begin with">C:\Windows\Temp</Image>
+    </ProcessCreate>
+
+    <ProcessCreate onmatch="exclude">
+      <!-- Filtrar ruídos conhecidos do sistema para poupar recurso -->
+      <Image condition="is">C:\Windows\System32\conhost.exe</Image>
+    </ProcessCreate>
+
+
+    <!-- ========================================================================= -->
+    <!-- EVENT ID 3: NETWORK CONNECTION (Conexões de Rede)                         -->
+    <!-- Mapeamento MITRE ATT&CK: T1071 (Application Layer Protocol - C2)         -->
+    <!-- ========================================================================= -->
+    <NetworkConnect onmatch="include">
+      <!-- Capturar conexões efetuadas por ferramentas administrativas/interpretes -->
+      <Image condition="end with">\powershell.exe</Image>
+      <Image condition="end with">\cmd.exe</Image>
+      <Image condition="end with">\rundll32.exe</Image>
+      <Image condition="end with">\regsvr32.exe</Image>
+      <Image condition="end with">\mshta.exe</Image>
+      <Image condition="end with">\certutil.exe</Image>
+    </NetworkConnect>
+
+    <NetworkConnect onmatch="exclude">
+      <!-- Ignorar tráfego loopback local e DNS padrão -->
+      <DestinationIp condition="is">127.0.0.1</DestinationIp>
+      <DestinationIp condition="is">::1</DestinationIp>
+    </NetworkConnect>
+
+
+    <!-- ========================================================================= -->
+    <!-- EVENT ID 7: IMAGE LOADED (Carregamento de DLLs Suspeitas)                -->
+    <!-- Mapeamento MITRE ATT&CK: T1574 (Hijack Execution Flow)                    -->
+    <!-- ========================================================================= -->
+    <ImageLoad onmatch="include">
+      <!-- Monitorar carregamento de DLLs sensíveis em locais não padrão -->
+      <ImageLoaded condition="end with">\amsi.dll</ImageLoaded>
+      <ImageLoaded condition="end with">\samlib.dll</ImageLoaded>
+      <ImageLoaded condition="end with">\vaultcli.dll</ImageLoaded>
+    </ImageLoad>
+
+    <ImageLoad onmatch="exclude">
+      <Image condition="begin with">C:\Program Files\</Image>
+      <Image condition="begin with">C:\Program Files (x86)\</Image>
+    </ImageLoad>
+
+
+    <!-- ========================================================================= -->
+    <!-- EVENT ID 11: FILE CREATE (Criação de Arquivos)                           -->
+    <!-- Mapeamento MITRE ATT&CK: T1105 (Ingress Tool Transfer)                   -->
+    <!-- ========================================================================= -->
+    <FileCreate onmatch="include">
+      <!-- Monitorar criação de scripts e executáveis em diretórios de escrita do usuário -->
+      <TargetFilename condition="contains">\AppData\Local\Temp\</TargetFilename>
+      <TargetFilename condition="end with">.ps1</TargetFilename>
+      <TargetFilename condition="end with">.bat</TargetFilename>
+      <TargetFilename condition="end with">.vbs</TargetFilename>
+      <TargetFilename condition="end with">.exe</TargetFilename>
+    </FileCreate>
+
+
+    <!-- ========================================================================= -->
+    <!-- EVENT ID 12, 13, 14: REGISTRY EVENTS (Modificações no Registro)           -->
+    <!-- Mapeamento MITRE ATT&CK: T1547.001 (Persistence: Registry Run Keys)      -->
+    <!-- ========================================================================= -->
+    <RegistryEvent onmatch="include">
+      <!-- Monitorar chaves clássicas de persistência de malwares -->
+      <TargetObject condition="contains">CurrentVersion\Run</TargetObject>
+      <TargetObject condition="contains">CurrentVersion\RunOnce</TargetObject>
+      <TargetObject condition="contains">Windows\System\Scripts</TargetObject>
+    </RegistryEvent>
+
+  </EventFiltering>
+</Sysmon>
