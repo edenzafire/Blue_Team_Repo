@@ -1,12 +1,12 @@
 <#
 .SYNOPSIS
-    Habilita Telemetria Avançada e Auditoria no Windows 10 .
+    Habilita Telemetria Avançada e Auditoria no Windows 10.
 .DESCRIPTION
     Aplica políticas de auditoria local, ativa o rastreamento de linha de comando (Event ID 4688),
-    abilita o PowerShell Script Block Logging (Event ID 4104) com tratamento de erros, 
+    habilita o PowerShell Script Block Logging (Event ID 4104) com tratamento de erros, 
     validação pós-execução e geração de logs de auditoria.
 .AUTHOR
-   Éden Zafire / Blue Team
+    Éden Zafire / Blue Team
 #>
 
 [CmdletBinding()]
@@ -40,7 +40,8 @@ function Write-Log {
 function Test-AdminPrivileges {
     $Identity = [Security.Principal.WindowsIdentity]::GetCurrent()
     $Principal = New-Object Security.Principal.WindowsPrincipal($Identity)
-    return $Principal.IsInRole([Security.Principal.WindowsRole]::Administrator)
+    # CORREÇÃO AQUI: WindowsBuiltInRole em vez de WindowsRole
+    return $Principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
 # --- INÍCIO DA EXECUÇÃO ---
@@ -129,3 +130,4 @@ try {
     Write-Log "Erro crítico durante a execução do script: $_" "ERROR"
     exit 1
 }
+
