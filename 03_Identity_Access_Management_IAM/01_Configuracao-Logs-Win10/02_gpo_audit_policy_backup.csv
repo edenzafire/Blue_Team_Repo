@@ -1,1 +1,122 @@
-## dmaflknjadjçkghrui
+﻿Nome do Computador,Destino da Política,Subcategoria,GUID de Subcategoria,Configuração de Inclusão,Configuração de Exclusão
+
+DESKTOP-VS678NC,Sistema,Extensão do sistema de segurança,{0CCE9211-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Integridade do sistema,{0CCE9212-69AE-11D9-BED3-505054503030},Êxito e Falha,
+
+DESKTOP-VS678NC,Sistema,Driver IPsec,{0CCE9213-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Outros Eventos do Sistema,{0CCE9214-69AE-11D9-BED3-505054503030},Êxito e Falha,
+
+DESKTOP-VS678NC,Sistema,Alteração no estado de segurança,{0CCE9210-69AE-11D9-BED3-505054503030},Êxito,
+
+DESKTOP-VS678NC,Sistema,Logon,{0CCE9215-69AE-11D9-BED3-505054503030},Êxito e Falha,
+
+DESKTOP-VS678NC,Sistema,Logoff,{0CCE9216-69AE-11D9-BED3-505054503030},Êxito,
+
+DESKTOP-VS678NC,Sistema,Bloqueio de conta,{0CCE9217-69AE-11D9-BED3-505054503030},Êxito,
+
+DESKTOP-VS678NC,Sistema,Modo principal do IPsec,{0CCE9218-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Modo rápido do IPsec,{0CCE9219-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Modo estendido do IPsec,{0CCE921A-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Logon especial,{0CCE921B-69AE-11D9-BED3-505054503030},Êxito,
+
+DESKTOP-VS678NC,Sistema,Outros eventos de logon/logoff,{0CCE921C-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Servidor de Política de Rede,{0CCE9243-69AE-11D9-BED3-505054503030},Êxito e Falha,
+
+DESKTOP-VS678NC,Sistema,Declarações do Usuário/Dispositivo,{0CCE9247-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Associação a um Grupo,{0CCE9249-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Direitos de Acesso,{0CCE924B-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Sistema de arquivos,{0CCE921D-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Registro,{0CCE921E-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Objeto Kernel,{0CCE921F-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,SAM,{0CCE9220-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Serviços de certificação,{0CCE9221-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Aplicativo gerado,{0CCE9222-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Manipulação de Identificador,{0CCE9223-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Compartilhamento de arquivos,{0CCE9224-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Descarte de Pacote de Plataforma de Filtragem,{0CCE9225-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Conexão de Plataforma de Filtragem,{0CCE9226-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Outros Eventos de Acesso a Objetos,{0CCE9227-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Compartilhamento de arquivos detalhado,{0CCE9244-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Armazenamento Removível,{0CCE9245-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Preparo da Política Central,{0CCE9246-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Uso de Privilégio Não Importante,{0CCE9229-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Outros Eventos de Uso de Privilégios,{0CCE922A-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Uso de Privilégio Importante,{0CCE9228-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Criação de processo,{0CCE922B-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Terminação de processo,{0CCE922C-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Atividade DPAPI,{0CCE922D-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Eventos de RPC,{0CCE922E-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Eventos Plug and Play,{0CCE9248-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Eventos Ajustados ao Direito de Token,{0CCE924A-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Auditoria de alteração de políticas,{0CCE922F-69AE-11D9-BED3-505054503030},Êxito,
+
+DESKTOP-VS678NC,Sistema,Alteração na política de autenticação,{0CCE9230-69AE-11D9-BED3-505054503030},Êxito,
+
+DESKTOP-VS678NC,Sistema,Alteração na Política de Autorização,{0CCE9231-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Alteração na política de nível de regra MPSSVC,{0CCE9232-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Alteração na Política da Plataforma de Filtragem,{0CCE9233-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Outros eventos de alteração de política,{0CCE9234-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Gerenciamento de conta de computador,{0CCE9236-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Gerenciamento de grupo de segurança,{0CCE9237-69AE-11D9-BED3-505054503030},Êxito,
+
+DESKTOP-VS678NC,Sistema,Gerenciamento de grupo de distribuição,{0CCE9238-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Gerenciamento de grupo de aplicativos,{0CCE9239-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Outros Eventos de Gerenciamento de Contas,{0CCE923A-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Gerenciamento de conta de usuário,{0CCE9235-69AE-11D9-BED3-505054503030},Êxito,
+
+DESKTOP-VS678NC,Sistema,Acesso ao serviço de diretório,{0CCE923B-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Alterações no serviço de diretório,{0CCE923C-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Replicação do serviço de diretório,{0CCE923D-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Replicação detalhada do serviço de diretório,{0CCE923E-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Operações do Tíquete de serviço Kerberos,{0CCE9240-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Outros Eventos de Logon de Conta,{0CCE9241-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Serviço de Autenticação Kerberos,{0CCE9242-69AE-11D9-BED3-505054503030},Sem Auditoria,
+
+DESKTOP-VS678NC,Sistema,Validação de Credenciais,{0CCE923F-69AE-11D9-BED3-505054503030},Sem Auditoria,
+

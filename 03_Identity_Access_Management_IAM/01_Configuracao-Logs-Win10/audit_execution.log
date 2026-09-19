@@ -1,0 +1,19 @@
+﻿[2026-09-19 18:38:28] [INFO] Iniciando implantaÃ§Ã£o de polÃ­ticas de telemetria...
+[2026-09-19 18:38:28] [INFO] [1/3] Aplicando subcategorias de auditoria nativas...
+[2026-09-19 18:38:28] [WARNING] Falha ao aplicar auditoria na subcategoria: Account Lockout
+[2026-09-19 18:38:28] [WARNING] Falha ao aplicar auditoria na subcategoria: Process Creation
+[2026-09-19 18:38:28] [WARNING] Falha ao aplicar auditoria na subcategoria: Process Termination
+[2026-09-19 18:38:28] [WARNING] Falha ao aplicar auditoria na subcategoria: Security State Change
+[2026-09-19 18:38:28] [WARNING] Falha ao aplicar auditoria na subcategoria: Security Group Management
+[2026-09-19 18:38:28] [WARNING] Falha ao aplicar auditoria na subcategoria: User Account Management
+[2026-09-19 18:38:28] [WARNING] Falha ao aplicar auditoria na subcategoria: File System
+[2026-09-19 18:38:28] [WARNING] Falha ao aplicar auditoria na subcategoria: Registry
+[2026-09-19 18:38:28] [SUCCESS] PolÃ­ticas de auditoria aplicadas com sucesso.
+[2026-09-19 18:38:28] [INFO] [2/3] Configurando chaves de registro de telemetria...
+[2026-09-19 18:38:28] [SUCCESS] Habilitado: CmdLine Process Tracking (Event 4688)
+[2026-09-19 18:38:28] [INFO] Caminho de registro criado: HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging
+[2026-09-19 18:38:28] [SUCCESS] Habilitado: PowerShell Script Block Logging (Event 4104)
+[2026-09-19 18:38:28] [INFO] [3/3] Validando integridade das configuraÃ§Ãµes...
+[2026-09-19 18:38:28] [SUCCESS] ValidaÃ§Ã£o do Registro: SUCESSO (Todas as chaves ativas)
+[2026-09-19 18:38:28] [SUCCESS] RelatÃ³rio de auditoria exportado para: .\02_gpo_audit_policy_backup.csv
+[2026-09-19 18:38:28] [SUCCESS] Processo concluÃ­do com Ãªxito.
