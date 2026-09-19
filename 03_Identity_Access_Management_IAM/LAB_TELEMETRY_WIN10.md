@@ -14,7 +14,7 @@ Este repositório documenta a implantação, auditoria de segurança, depuraçã
 
 ## 🚀 2. Implantação e Execução Passo a Passo
 
-** Etapa 1: Obtenção do Repositório
+**Etapa 1: Obtenção do Repositório
 
 O projeto foi clonado diretamente do repositório remoto para a máquina local de testes.
 
@@ -29,6 +29,138 @@ O projeto foi clonado diretamente do repositório remoto para a máquina local d
 
 ## Etapa 2: Preparação do Ambiente e Execução do Script de Auditoria
 
+*  Verificação de Arquivos: Navegação até o diretório 01_Configuracao-Logs-Win10 e listagem dos scripts nativos (01_enable_advanced_audit.ps1).
 
+```
+.\01_enable_advanced_audit.ps1
+
+```
+
+## 🛠️ 3. Seção de Troubleshooting (Erros e Soluções)
+
+Durante a execução do projeto, diversos bloqueios e exceções de ambiente foram identificados e corrigidos:
+
+## ⚠️ Erro 1: Bloqueio de Política de Execução de Scripts (PSSecurityException)
+
+*  Sintoma: Bloqueio de segurança ao tentar executar o script .\01_enable_advanced_audit.ps1:
+
+```
+...\01_enable_advanced_audit.ps1 não pode ser carregado porque a execução de scripts foi desabilitada neste sistema.
+
+```
+
+*  Causa: Política de execução do PowerShell configurada no modo restrito por padrão.
+
+*  Solução: Alteração temporária do escopo do processo com o comando:
+
+```
+Set-ExecutionPolicy RemoteSigned -Scope Process -Force
+
+```
+
+![Erro na Execussão](https://github.com/edenzafire/Blue_Team_Repo/blob/main/03_Identity_Access_Management_IAM/Evidencias/04.png)
+
+
+## ⚠️ Erro 2: Script Não Assinado Digitalmente (UnauthorizedAccess)
+
+*  Sintoma: Mesmo após mudar a política para RemoteSigned, o script foi bloqueado por ausência de assinatura digital.
+
+*  Solução: Aplicação do bypass total para a sessão atual do PowerShell:
+
+```
+Set-ExecutionPolicy Bypass -Scope Process -Force
+
+```
+
+![Script não Assinado](https://github.com/edenzafire/Blue_Team_Repo/blob/main/03_Identity_Access_Management_IAM/Evidencias/05.png)
+
+
+## ⚠️ Erro 3: Incompatibilidade de Idioma na Ferramenta auditpol (0x00000057)
+
+*  Sintoma: Ao executar 01_enable_advanced_audit.ps1, o utilitário auditpol retornou o erro Erro 0x00000057: Parâmetro incorreto em subcategorias como Process Creation e Account Lockout
+
+*  Causa: O sistema operacional Windows está instalado em Português (Pt-BR). O utilitário auditpol exige que os nomes das subcategorias sejam digitados no idioma nativo do sistema operacional (ex: "Criação de processo" em vez de "Process Creation")
+
+*  Observação Importante: As alterações nas Chaves de Registro (Event 4688 e Script Block Logging 4104) foram aplicadas com sucesso.
+
+*  Solução Manual/Direta: Execução do comando do auditpol adaptado para o idioma do SO
+
+```
+auditpol /set /subcategory:"Criação de processo" /success:enable /failure:enable
+
+```
+![Evidencia Auditpol](https://github.com/edenzafire/Blue_Team_Repo/blob/main/03_Identity_Access_Management_IAM/Evidencias/06.png)
+
+![Correção](https://github.com/edenzafire/Blue_Team_Repo/blob/main/03_Identity_Access_Management_IAM/Evidencias/07.png)
+
+## ⚠️ Erro 4: Ausência do Executável do Sysmon no Diretório do Projeto
+
+*  Sintoma: O utilitário Sysmon64.exe não se encontrava na pasta clonada.
+*  Solução: Download automatizado direto do Sysinternals da Microsoft e aplicação da configuração do repositório SwiftOnSecurity:
+
+
+# Criar diretório dedicado e baixar Sysmon + Configuração
+```
+New-Item -ItemType Directory -Path "C:\Users\WinLab\Desktop\Sysmon" -Force | Out-Null
+cd C:\Users\WinLab\Desktop\Sysmon
+
+Invoke-WebRequest -Uri "https://live.sysinternals.com/files/Sysmon.zip" -OutFile ".\Sysmon.zip"
+Expand-Archive -Path ".\Sysmon.zip" -DestinationPath "." -Force
+
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/SwiftOnSecurity/sysmon-config/master/sysmonconfig-export.xml" -OutFile ".\sysmon_config.xml"
+
+```
+
+# Instalação do Serviço
+
+```
+.\Sysmon64.exe -accepteula -i .\sysmon_config.xml
+
+```
+![Instalação Sysmon](https://github.com/edenzafire/Blue_Team_Repo/blob/main/03_Identity_Access_Management_IAM/Evidencias/08.png)
+
+### ⚠️ Erro 5: Nome do Serviço Divergente (`GetServiceCommandException`)
+
+
+* Sintoma: O comando `Get-Service Sysmon` retornava a mensagem: `Não é possível localizar qualquer serviço com o nome de serviço 'Sysmon'.
+* Causa: Em arquiteturas de 64 bits, quando instalado via `Sysmon64.exe`, o nome do serviço é registrado no Windows com o sufixo `64`.
+* Solução: Consultar o nome exato registrado do serviço:
+
+  ```
+  Get-Service Sysmon64
+ 
+  ```
+![Error Name](https://github.com/edenzafire/Blue_Team_Repo/blob/main/03_Identity_Access_Management_IAM/Evidencias/09.png)
+
+### ⚠️ Erro 6: Erro de Sintaxe e Parser no Script de Hunting (ParseException)
+
+*  Sintoma: Falha ao executar .\03_hunting_phishing_analysis.ps1 com múltiplos erros de sintaxe (ex: ')' de fechamento ausente e caracteres de barra invertida escapando parênteses
+*  Causa: Corrupção de caracteres especiais e formatação durante a cópia/transferência do arquivo
+*  Solução: Reescrever o arquivo de análise diretamente via PowerShell com bloco here-string limpo e codificação UTF-8:
+
+
+**A mudança realizada através do scrip**
+
+[triagem.ps1](hg)
+
+### 📊 4. Resultado da Caça a Ameaças (Threat Hunting)
+
+Após a reescrita e correção do script, a análise varreu os eventos do Sysmon/Segurança e consolidou as evidências:
+
+*  Execução com Sucesso: O script processou os logs operacionais e identificou 9 detecções de ameaças/anomalias no ambiente.
+
+![Sucesso](https://github.com/edenzafire/Blue_Team_Repo/blob/main/03_Identity_Access_Management_IAM/Evidencias/11.png)
+
+*  Arquivo Gerado: O artefato de telemetria hunting_summary.csv foi criado com sucesso no diretório de trabalho com tamanho total de 7.28 KB (7280 bytes).
+
+![Arquovo gerado](https://github.com/edenzafire/Blue_Team_Repo/blob/main/03_Identity_Access_Management_IAM/Evidencias/12.png)
+
+### 📈 5. Próximos Passos: Análise Estatística em R
+
+Com o dataset hunting_summary.csv extraído e validado no Windows 10 VM:
+
+
+*  Com o dataset hunting_summary.csv extraído e validado no Windows 10 VM.
+*  No RStudio, será executado o script 04_telemetry_analytics.R para geração de matrizes de severidade, distribuição de eventos e gráficos estáticos/animados (ggplot2 e gganimate).
 
 
