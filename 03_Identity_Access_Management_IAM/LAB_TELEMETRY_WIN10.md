@@ -141,7 +141,7 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/SwiftOnSecurity/sysmon
 
 **A mudança realizada através do scrip**
 
-[triagem.ps1](hg)
+[triagem.ps1](https://github.com/edenzafire/Blue_Team_Repo/blob/main/03_Identity_Access_Management_IAM/triagem.ps1)
 
 ### 📊 4. Resultado da Caça a Ameaças (Threat Hunting)
 
