@@ -134,6 +134,7 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/SwiftOnSecurity/sysmon
 *  Causa: Corrupção de caracteres especiais e formatação durante a cópia/transferência do arquivo
 *  Solução: Reescrever o arquivo de análise diretamente via PowerShell com bloco here-string limpo e codificação UTF-8:
 
+![erro](https://github.com/edenzafire/Blue_Team_Repo/blob/main/03_Identity_Access_Management_IAM/Evidencias/10.png)
 
 **A mudança realizada através do scrip**
 
