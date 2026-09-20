@@ -31,10 +31,6 @@ O projeto foi clonado diretamente do repositório remoto para a máquina local d
 
 *  Verificação de Arquivos: Navegação até o diretório 01_Configuracao-Logs-Win10 e listagem dos scripts nativos (01_enable_advanced_audit.ps1).
 
-```
-.\01_enable_advanced_audit.ps1
-
-```
 
 ## 🛠️ 3. Seção de Troubleshooting (Erros e Soluções)
 
