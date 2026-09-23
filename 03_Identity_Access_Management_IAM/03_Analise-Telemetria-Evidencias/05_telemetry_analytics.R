@@ -5,6 +5,7 @@
 #            incidentes e compila animação temporal do ataque.
 # ==============================================================================
 
+
 # 1. Carregamento Seguro das Bibliotecas
 suppressPackageStartupMessages({
   library(tidyverse)
@@ -25,11 +26,12 @@ if (!file.exists(csv_path)) {
 cat("[+] Lendo e higienizando dados de telemetria unificada (Sysmon + YARA)...\n")
 
 clean_data <- read.csv(csv_path, stringsAsFactors = FALSE, encoding = "UTF-8") %>%
-  filter(!is.na(UtcTime) & UtcTime != "") %>%
+  filter(!is.na(Timestamp) & Timestamp != "") %>%
   mutate(
-    Timestamp = ymd_hms(UtcTime),
+    Timestamp = ymd_hms(Timestamp),
     Severity  = factor(Severity, levels = c("CRITICAL", "HIGH", "MEDIUM", "LOW"))
   )
+
 
 # ------------------------------------------------------------------------------
 # 3. Gráfico Estático: Incident Spike Dashboard (PNG HD)
@@ -64,27 +66,31 @@ ggsave("timeline_incident_spike.png", plot = static_plot, width = 10, height = 5
 cat("    └─ [✔] 'timeline_incident_spike.png' gerado com sucesso!\n")
 
 # ------------------------------------------------------------------------------
-# 4. Animação Temporal: Timeline do Ataque em Tempo Real (GIF)
+# 4. Painel Temporal de Telemetria (Timeline Estática em Alta Resolução)
 # ------------------------------------------------------------------------------
-cat("[+] Renderizando animação temporal (GIF) com gganimate...\n")
+cat("[+] Gerando gráfico de distribuição temporal das detecções...\n")
 
-animated_plot <- static_plot +
-  transition_time(Timestamp) +
-  shadow_mark(past = TRUE, future = FALSE) +
+# Construção do gráfico de facetas temporais por Severidade
+timeline_plot <- ggplot(clean_data, aes(x = Timestamp, fill = Severity)) +
+  geom_histogram(binwidth = 300, color = "black", alpha = 0.85, show.legend = FALSE) +
+  facet_wrap(~ Severity, ncol = 1, scales = "free_y") +
+  scale_fill_manual(values = c(
+    "CRITICAL" = "#d9534f",
+    "HIGH"     = "#f0ad4e",
+    "MEDIUM"   = "#5bc0de",
+    "LOW"      = "#5cb85c"
+  )) +
+  theme_minimal() +
   labs(
-    title = "Evolução do Ataque em Tempo Real",
-    subtitle = "Linha do Tempo de Detecção | Horário do Evento: {frame_time}"
+    title = "Linha do Tempo dos Eventos de Telemetria (Sysmon + YARA)",
+    subtitle = "Distribuição de Incidentes Detectados ao Longo do Tempo",
+    x = "Horário do Evento",
+    y = "Volume de Detecções"
   )
 
-# Renderização do arquivo GIF animado
-animate(
-  animated_plot, 
-  nframes  = 100, 
-  fps      = 10, 
-  width    = 800, 
-  height   = 450, 
-  renderer = gifski_renderer("incident_timeline.gif")
-)
+# Salvar arquivo PNG no diretório atual
+output_png <- file.path(getwd(), "incident_timeline.png")
+ggsave(output_png, plot = timeline_plot, width = 10, height = 7, dpi = 300)
 
-cat("    └─ [✔] 'incident_timeline.gif' gerado com sucesso!\n")
+cat("    └─ [✔] 'incident_timeline.png' gerado e salvo com sucesso!\n")
 cat("\n[SUCESSO] Pipeline de Ciência de Dados concluído! Todos os artefatos visuais estão prontos.\n")
