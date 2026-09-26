@@ -165,13 +165,17 @@ Após a extração e validação do dataset `hunting_summary.csv` no ambiente Wi
 #### 📊 6. Resultados da Análise de Telemetria
 A execução do pipeline em R consumiu os eventos higienizados e gerou os artefatos visuais de análise temporal e volumetria do incidente:
 
-1. Análise Temporal de Anomalias (timeline_incident_spike.png):
+1. Análise Temporal de Anomalias 
+
+![timeline_incident_spike.png](https://github.com/edenzafire/Blue_Team_Repo/blob/main/03_Identity_Access_Management_IAM/Evidencias/timeline_incident_spike.png)
 
    *  Agrupamento de logs em janelas fixas de 5 minutos.
 
    *  Identificação clara de pico de atividade suspeita concentrado entre 21:50 e 22:00.
 
-2. Distribuição Contínua por Severidade (incident_timeline.png):
+2. Distribuição Contínua por Severidade
+
+ ![incident_timeline.png](https://github.com/edenzafire/Blue_Team_Repo/blob/main/03_Identity_Access_Management_IAM/Evidencias/timeline_incident_spike.png)
 
    *   Histograma de eventos classificados por criticidade.
 
