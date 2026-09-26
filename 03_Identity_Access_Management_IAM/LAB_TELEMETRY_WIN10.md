@@ -152,12 +152,37 @@ Após a reescrita e correção do script, a análise varreu os eventos do Sysmon
 
 ![Arquovo gerado](https://github.com/edenzafire/Blue_Team_Repo/blob/main/03_Identity_Access_Management_IAM/Evidencias/12.png)
 
-### 📈 5. Próximos Passos: Análise Estatística em R
+### 📈 5. Análise Estatística e Visualização de Dados em R
 
-Com o dataset hunting_summary.csv extraído e validado no Windows 10 VM:
+Após a extração e validação do dataset `hunting_summary.csv` no ambiente Windows, os dados foram transferidos para a estação de análise Blue Team (ThinkPad E470 - Ubuntu 24.04 Noble) para processamento estatístico e geração de visuais com RStudio e `tidyverse`.
 
+#### 🛠️ Seção de Troubleshooting (Ambiente R e Renderização)
 
-*  Com o dataset hunting_summary.csv extraído e validado no Windows 10 VM.
-*  No RStudio, será executado o script 04_telemetry_analytics.R para geração de matrizes de severidade, distribuição de eventos e gráficos estáticos/animados (ggplot2 e gganimate).
+* **Resolução de Chaves GPG / Repositório CRAN:** Repositórios do R no Ubuntu Noble foram ajustados e as dependências nativas (`libcurl4-openssl-dev`, `libssl-dev`, `cargo`) foram consolidadas via `apt`.
+* **Tratamento de Esquema de Dados:** O parser do script `05_telemetry_analytics.R` foi atualizado para alinhar o mapeamento da coluna temporal com o cabeçalho real do CSV (`Timestamp`).
+* **Estabilidade de Renderização:** Para evitar exceções de buffer e pastas temporárias (`/tmp`) em instâncias Linux, a exportação do pipeline gráfico foi padronizada em imagens estáticas de alta resolução via `ggplot2::ggsave`.
+
+#### 📊 6. Resultados da Análise de Telemetria
+A execução do pipeline em R consumiu os eventos higienizados e gerou os artefatos visuais de análise temporal e volumetria do incidente:
+
+1. Análise Temporal de Anomalias (timeline_incident_spike.png):
+
+   *  Agrupamento de logs em janelas fixas de 5 minutos.
+
+   *  Identificação clara de pico de atividade suspeita concentrado entre 21:50 e 22:00.
+
+2. Distribuição Contínua por Severidade (incident_timeline.png):
+
+   *   Histograma de eventos classificados por criticidade.
+
+   *   Todas as 9 detecções capturadas enquadraram-se na severidade HIGH, referentes a comportamento de descompactação e execução encadeada via navegadores/processos utilitários (msedge.exe).
+
+#### 🏆 7. Conclusão e Lições Aprendidas
+
+*  Eficácia da Telemetria Integrada: A combinação do Sysmon (Event ID 1) com o acompanhamento de linha de comando permitiu reconstruir a árvore de execução dos processos sem lacunas visuais.
+
+* Resiliência na Resposta a Incidentes: O ajuste dinâmico de scripts PowerShell em ambientes heterogêneos (Win10 Pt-BR vs Linux RStudio) comprovou a importância de pipelines de dados robustos para Triagem e Threat Hunting.
+
+* Escalabilidade: O ambiente de análise em R está homologado para processar datasets de maior escala gerados por frameworks de Command and Control (C2) e simulações de adversários em fases avançadas de laboratório.
 
 
